@@ -41,7 +41,7 @@ export default function App() {
 
         <h2>🧪 Usage</h2>
         <pre>
-bugblaze analyze path/to/your/file.js
+bugblaze analyze path/to/your/file.js{'\n'}
 bugblaze fun path/to/your/file.js --explain
         </pre>
 
