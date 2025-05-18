@@ -1,11 +1,9 @@
 import React from 'react';
 import './index.css';
-import SEO from './seo';
 
 export default function App() {
   return (
     <div className="container">
-      <SEO />
       <header>
         <h1>BugBlaze</h1>
         <p className="subtitle">Catch bugs. Understand fast.</p>
