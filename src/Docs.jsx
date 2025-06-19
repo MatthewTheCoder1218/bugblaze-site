@@ -1,122 +1,116 @@
-import React, { useRef } from 'react';
-import './index.css';
-import logo from '/bugblaze.png'
-import { showToast } from './utils/toast';
+import React from 'react';
+import logo from '/bugblaze.png';
+import { Link } from 'react-router-dom';
 
-export default function App() {
-  const feedbackRef = useRef();
-
-  const handleFeedbackSubmit = () => {
-    const value = feedbackRef.current.value.trim();
-    if (!value) {
-      showToast('Please enter your feedback before submitting.');
-      return;
-    }
-    // Here you would typically send the feedback to your server or API
-    showToast('Thank you for your feedback!', 'success');
-    feedbackRef.current.value = ''; // Clear the textarea after submission
-  }
-
+export default function Docs() {
   return (
-    <div className="container">
-      <header>
-        <h1><img src={logo} alt="bugblaze logo" className="logo" />BugBlaze</h1>
-        <p className="subtitle">Your terminal’s new debugging assistant.</p>
-        <p className="tagline">Catch bugs. Understand fast. Powered by AI.</p>
-        <div className="buttons">
-          <a href="https://www.npmjs.com/package/bugblaze" target="_blank" rel="noreferrer" className="btn">Install Now</a>
-          <a href="https://github.com/MatthewTheCoder1218/bugblaze" target="_blank" rel="noreferrer" className="btn-outline">GitHub</a>
+    <div className="bg-black text-white min-h-screen flex flex-col font-sans">
+      {/* Top nav */}
+      <nav className="flex items-center justify-between px-8 py-6 border-b border-gray-800">
+        <div className="flex items-center gap-3">
+          <img src={logo} alt="BugBlaze Logo" className="w-8 h-8" />
+          <span className="font-bold text-lg tracking-tight">BugBlaze Docs</span>
+          <span className="ml-2 text-xs text-green-400 bg-gray-800 px-2 py-1 rounded">Beta</span>
         </div>
-        <a href="https://www.npmjs.com/package/bugblaze" target="_blank" rel="noreferrer">
-          <img src="https://img.shields.io/npm/dm/bugblaze?color=brightgreen&label=BugBlaze%20Users&style=for-the-badge" className='badge h-[18px]' />
-        </a>
-      </header>
+        <Link to="/" className="text-gray-400 hover:text-green-400 transition">← Back to Home</Link>
+      </nav>
 
-      <section>
-        <h2>🚀 Core Features</h2>
-        <ul className="features">
-          <li>
-            <strong>🧠 AI-Powered Error Explanations:</strong><br />
-            Understand bugs instantly with smart, human-like summaries.
-          </li>
-          <li>
-            <strong>🧪 Logic & Runtime Issue Detection:</strong><br />
-            Catch hidden bugs that don’t break syntax but break your app.
-          </li>
-        </ul>
-
-        <p className="coming-soon">More features coming soon. Help us prioritize by leaving feedback!</p>
-
-        <hr />
-
-        <h2>📦 Installation</h2>
-        <p>Install globally with npm:</p>
-        <pre>npm install -g bugblaze</pre>
-
-        <p>Then run:</p>
-        <pre>bugblaze-init</pre>
-
-        <h2>🧪 Usage</h2>
-        <pre>
-bugblaze analyze path/to/your/file.js{'\n'}
-bugblaze fun path/to/your/file.js --explain
-        </pre>
-
-        <h2>🔐 Environment Setup</h2>
-        <p>Set your Groq API key to enable AI features:</p>
-        <pre className="code-block">
-Linux / Mac:{'\n'}
-export GROQ_API_KEY="your-api-key"{'\n\n'}
-Windows (PowerShell):{'\n'}
-$env:GROQ_API_KEY="your-api-key"{'\n\n'}
-Windows (CMD):{'\n'}
-set GROQ_API_KEY=your-api-key
-        </pre>
-        <p>
-          Get your key from <a href="https://console.groq.com" target="_blank" rel="noreferrer">Groq Console</a>.
-        </p>
-
-        <h2>📚 Supported Languages</h2>
-        <ul>
-          <li>JavaScript / TypeScript</li>
-          <li>Python</li>
-          <li>Java</li>
-          <li>JSX / TSX</li>
-        </ul>
-
-        <h2>⚙️ Requirements</h2>
-        <ul>
-          <li><strong>Node.js:</strong> v18.0.0 or higher</li>
-          <li><strong>npm:</strong> Included with Node.js</li>
-          <li><strong>Global Installation:</strong> Use <code>-g</code> flag</li>
-        </ul>
-
-        <h2>🛠️ Troubleshooting</h2>
-        <ol>
-          <li>Check install: <code>npm list -g bugblaze</code></li>
-          <li>Verify Node.js global bin path</li>
-          <li>Ensure PATH includes npm global bin dir</li>
-        </ol>
-
-        <h2>📄 License</h2>
-        <p>This project is licensed under the ISC License.</p>
-
-        <h2>👤 Author</h2>
-        <p><strong>Matthew Michael</strong> (aka Little Prince)</p>
+      {/* Hero */}
+      <section className="w-full bg-black px-0 py-20 border-b border-gray-800">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-8">
+          <div className="flex-1 flex flex-col items-start">
+            <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 leading-tight text-white">
+              BugBlaze <span className="text-green-400">Documentation</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+              Everything you need to get started, use, and master BugBlaze.<br />
+              <span className="text-green-400">Fast, AI-powered, and secure.</span>
+            </p>
+            <div className="bg-[#18181b] rounded-lg px-6 py-4 inline-block text-green-400 font-mono text-lg mb-2">
+              $ npm install -g bugblaze
+            </div>
+          </div>
+        </div>
       </section>
 
-        <h2>💬 Feedback</h2>
-        <p>
-          Found an issue or want to share thoughts? <br />
-          <a href="https://github.com/MatthewTheCoder1218/bugblaze/issues" target="_blank" rel="noreferrer">Open an issue on GitHub</a> or leave feedback below:
-        </p>
-        <div className='feedback-container'>
-          <textarea ref={feedbackRef} placeholder='Your feedback...' className='form'></textarea>
-          <button onClick={handleFeedbackSubmit} className='button'>Send</button>
-        </div>
+      {/* Main Docs */}
+      <main className="px-6 md:px-10 py-16 max-w-5xl mx-auto w-full">
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4 text-green-400">📦 Installation</h2>
+          <p className="text-gray-300 mb-4">Install BugBlaze globally using npm:</p>
+          <pre className="bg-[#111111] border border-green-500 rounded-lg p-4 overflow-x-auto text-green-400 text-base">
+            <code>npm install -g bugblaze</code>
+          </pre>
+        </section>
 
-      <footer>
-        © {new Date().getFullYear()} BugBlaze. Built by Little Prince.
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4 text-green-400">🚀 Usage</h2>
+          <p className="text-gray-300 mb-2">Analyze a file for syntax issues:</p>
+          <pre className="bg-[#111111] border border-green-500 rounded-lg p-4 overflow-x-auto text-green-400 text-base">
+            <code>bugblaze fun app.js</code>
+          </pre>
+          <p className="text-gray-300 mt-4">Analyze for logical/runtime issues:</p>
+          <pre className="bg-[#111111] border border-green-500 rounded-lg p-4 overflow-x-auto text-green-400 text-base">
+            <code>bugblaze analyze app.js</code>
+          </pre>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4 text-green-400">⚙️ Commands</h2>
+          <ul className="list-disc list-inside text-gray-200 space-y-3">
+            <li><code className="text-green-400">bugblaze fun app.js</code> – Check for syntax errors (JS, TS, Python, Java)</li>
+            <li><code className="text-green-400">bugblaze analyze app.js</code> – Find logic and runtime issues</li>
+            <li><code className="text-green-400">bugblaze generate codebase "project description"</code> – Generate new project code structure</li>
+            <li><code className="text-green-400">bugblaze generate tests utils/helpers.js</code> – Generate unit tests</li>
+            <li><code className="text-green-400">bugblaze generate docs utils/helpers.js</code> – Generate documentation</li>
+            <li><code className="text-green-400">bugblaze generate refactor utils/helpers.js</code> – Suggest refactor improvements</li>
+            <li><code className="text-green-400">bugblaze health-scan</code> – Scan full codebase</li>
+            <li><code className="text-green-400">bugblaze mentor app.js</code> – Line-by-line AI mentoring</li>
+            <li><code className="text-green-400">bugblaze chat</code> – Interactive chat with the AI assistant</li>
+            <li><code className="text-green-400">bugblaze config set apikey your-key</code> – Set your API key</li>
+            <li><code className="text-green-400">bugblaze config show</code> – Show current config</li>
+            <li><code className="text-green-400">bugblaze config delete apikey</code> – Delete your API key</li>
+          </ul>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4 text-green-400">📚 Examples</h2>
+          <pre className="bg-[#111111] border border-green-500 rounded-lg p-4 overflow-x-auto text-green-400 text-base mb-4">
+            <code>{`// JavaScript Error
+function test() {
+  console.log(x); // x is not defined
+}
+
+bugblaze fun test.js`}</code>
+          </pre>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4 text-green-400">❓ FAQ</h2>
+          <div className="space-y-6 text-gray-300">
+            <div>
+              <h3 className="font-semibold text-white">Does it send my code to the cloud?</h3>
+              <p>No, your code stays on your machine unless you opt in to share.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">What languages are supported?</h3>
+              <p>Currently: JavaScript, TypeScript, Python, Java, JSX, TSX.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Is it free?</h3>
+              <p>Yes! BugBlaze is currently in beta and free for all users.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">What are premium features?</h3>
+              <p>Premium unlocks health scans, mentor mode, and advanced code generation via a license key.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="text-center text-gray-500 text-lg py-10 border-t border-gray-800 bg-black">
+        &copy; {new Date().getFullYear()} BugBlaze. Built by Little Prince.
       </footer>
     </div>
   );
