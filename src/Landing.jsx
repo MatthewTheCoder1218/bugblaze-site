@@ -89,24 +89,18 @@ export default function Landing() {
       GitHub
     </a>
   </div>
-  <Link
-    to="/docs"
-    className="bg-white text-black font-semibold px-5 py-2 rounded-full hover:bg-green-400 hover:text-black transition"
-  >
-    Install Now
-  </Link>
 </nav>
 
 			{/* Hero */}
-			<section className="w-full bg-black px-0 py-24 border-b border-gray-800">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-8">
+			<section className="w-full bg-black px-0 py-16 sm:py-24 border-b border-gray-800">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 px-4 sm:px-8">
     {/* Left: Headline, subheadline, CTA, install */}
-    <div className="flex-1 flex flex-col items-start">
-      <h1 className="text-5xl sm:text-7xl font-extrabold mb-8 leading-tight text-white">
+    <div className="flex-1 flex flex-col items-start w-full">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 sm:mb-8 leading-tight text-white">
         The intelligent<br />
         <span className="text-green-400">terminal assistant.</span>
       </h1>
-      <p className="text-xl text-gray-300 mb-10 max-w-lg">
+      <p className="text-lg sm:text-xl text-gray-300 mb-8 sm:mb-10 max-w-lg">
         Become a command line power user on day one.<br />
         BugBlaze combines AI and your dev team’s knowledge in one fast, intuitive CLI tool.
       </p>
@@ -119,42 +113,46 @@ export default function Landing() {
         </Link>
       </div>
       <div className="text-gray-400 text-sm mb-4">For Windows, Mac, and Linux</div>
-      <div className="bg-[#18181b] rounded-lg px-6 py-4 inline-block text-green-400 font-mono text-lg mb-2">
+      <div className="bg-[#18181b] rounded-lg px-6 py-4 inline-block text-green-400 font-mono text-base sm:text-lg mb-2 w-full max-w-full overflow-x-auto">
         $ npm install -g bugblaze
       </div>
     </div>
     {/* Right: Terminal Demo */}
-    <div className="flex-1 flex justify-center w-full">
-      <TerminalDemo
-        initialCommand={featureTerminals["Fun: Syntax Issue Detection"].command}
-        response={featureTerminals["Fun: Syntax Issue Detection"].response}
-      />
+    <div className="flex-1 flex justify-center w-full mt-8 md:mt-0">
+      <div className="w-full max-w-xl">
+        <TerminalDemo
+          initialCommand={featureTerminals["Fun: Syntax Issue Detection"].command}
+          response={featureTerminals["Fun: Syntax Issue Detection"].response}
+        />
+      </div>
     </div>
   </div>
 </section>
 
 {/* Features */}
-<section id="features" className="bg-[#0a0a0a] px-4 py-28">
-  <h2 className="text-5xl font-bold text-center mb-24 text-green-400">
+<section id="features" className="bg-[#0a0a0a] px-2 sm:px-4 py-16 sm:py-28">
+  <h2 className="text-3xl sm:text-5xl font-bold text-center mb-16 sm:mb-24 text-green-400">
     Why Developers Love BugBlaze
   </h2>
-  <div className="flex flex-col gap-32 max-w-6xl mx-auto">
+  <div className="flex flex-col gap-20 sm:gap-32 max-w-6xl mx-auto">
     {features.map((feature, i) => (
       <div
         key={feature.title}
-        className={`flex flex-col md:flex-row ${i % 2 === 1 ? "md:flex-row-reverse" : ""} items-center gap-16`}
+        className={`flex flex-col md:flex-row ${i % 2 === 1 ? "md:flex-row-reverse" : ""} items-center gap-10 md:gap-16`}
       >
         {/* Left: Text */}
-        <div className="flex-1 flex flex-col items-start md:items-start">
-          <h3 className="text-4xl font-bold mb-4 text-white">{feature.title}</h3>
-          <p className="text-2xl text-green-400 mb-6">{feature.desc}</p>
+        <div className="flex-1 flex flex-col items-start w-full">
+          <h3 className="text-2xl sm:text-4xl font-bold mb-3 sm:mb-4 text-white">{feature.title}</h3>
+          <p className="text-lg sm:text-2xl text-green-400 mb-4 sm:mb-6">{feature.desc}</p>
         </div>
         {/* Right: Terminal Demo + Video */}
-        <div className="flex-1 flex flex-col items-center gap-6 w-full">
-          <TerminalDemo
-            initialCommand={featureTerminals[feature.title]?.command || ""}
-            response={featureTerminals[feature.title]?.response || ""}
-          />
+        <div className="flex-1 flex flex-col items-center gap-4 sm:gap-6 w-full">
+          <div className="w-full max-w-xl overflow-x-auto">
+            <TerminalDemo
+              initialCommand={featureTerminals[feature.title]?.command || ""}
+              response={featureTerminals[feature.title]?.response || ""}
+            />
+          </div>
         </div>
       </div>
     ))}
